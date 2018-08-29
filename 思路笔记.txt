@@ -1,0 +1,31 @@
+1.确定HTML以及css结构
+2.定义个get对象，其中包括：绑定事件的函数方法、获取元素到文章顶部和左部的距离（pageY 以及 pageX）函数方法、判断某个元素是否含有某个className的函数方法、回调函数方法、获取某个元素的某个自定义属性值以及设置某个元素的某个自定义属性的值的函数方法
+3.确定延时加载的函数：function LazyLoad(obj){} 带参数主要是为了后面实例化的时候传参  new LazyLoad("box");
+4.在延时加载函数中：
+	a.定义变量保存定义的回调函数 ：fnLoad = 第二步骤中的回调函数
+	b.绑定事件，用第二步骤中的事件绑定函数将window绑定上  scroll 事件以及 resize事件
+	c.要主动执行一次第6步骤中的load函数 this.load();
+	d.定义变量保存最外层的盒子 this.box = type of obj == "string" ? document.getElementById(obj) : obj   obj就是函数的参数
+	e.定义变量保存盒子中的所有img元素 this.oImg = this.box.getELementsByTagName("img");
+
+5.延时加载函数的原型：LazyLoad.prototype = {}
+6.原型中要包含两个函数：一个是接受一个参数，来返回一个数组的
+	6.1一个loaded()函数 获取所有图片元素this.oImg  遍历所有的图片元素，然后通过对参数的布尔值进行判断，若为真将满足条件的加入数组arr.push()   若不为真，则将不满足条件的加入数组：
+		!!states ? get.hasClass(this.oImg[i],'loaded') && arr.push(this.oImg[i]) : get.hasClass(this.oImg[i],'loaded') || arr.push(this.oImg[i])
+	6.2然后返回arr
+
+	6.3另一个函数load()，主要是判断每一个img元素是否出现在了可见区域，然后对出现了的设置src值，并且添加class='loaded'
+	6.4定义个变量，来保存所有不含class="loaded"的img元素：var aNotLoaded = 调用6.1的函数，传入参数0  比如：var aNotLoaded = this.loaded(0) 就保存了所有没有class='loaded'的img元素
+	6.5要先定义变量保存iTOP  和 iBottom 都等于0；定义一个变量来保存img的父元素；var oParent = null;先将值设置为null
+		a.定义变量保存滚动高度 iScrollHeight = document.documentElement.srcollTop || document.body.srcollTop
+		b.定义变量保存整个文档的可见高度 + 滚动的高度  iClientHeight = document.documentElement.clientHeight + iScrollTop
+	6.6当含有class='loaded'的img元素个数不等于img元素的个数时  if(this.loaded(1).length !== this.oImg.length)  就要循环遍历所有还不含有class='loded'的img元素即上面的变量 ：aNotLoaded
+	6.7for(i = 0;i < aNotLoaded.length;i++){}
+	6.8for循环中，要重新获取iTop 以及 iBottom的值， 还有oParent的值
+	6.9 oParent = aNotLoded[i].parentElement || aNotLoaded.parentNode; iTop = get.pageY(oParent);iBottom = iTop + oParent.offsetHeight;
+	6.10 然后将iTop 以及 iBottom与 之前的iScrollTop  和 iClientHeight 进行比较
+	6.11 if((iTop > iScrollTop && iTop < iClientHeight) || (iBottom > iScrollHeight && iBottom < iClientHeight))
+	6.12满足6.11的条件后就将img中的data-img属性值赋给 src aNotLoaded.src = get.attr(aNotLoaded,'data-img') 再讲已经获取了src的图片加上class='loaded'   aNotLoaded[i].className = 'loaded'
+
+7.然后当页面加载后就执行以上操作，并对构造函数实例化
+	get.on(window,'load',function(){new LazyLoad('box')})

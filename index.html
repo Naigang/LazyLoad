@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>延时加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 770px;
+            padding: 10px 0 0 10px;
+            background: #f00;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        li {
+            float: left;
+            margin-right: 10px;
+            width: 375px;
+            height: 225px;
+            overflow: hidden;
+            background: #000 url(img/loading.gif) 50% 50% no-repeat;
+            margin: 0 10px 10px 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        li img {
+            width: 353px;
+            height: 225px;
+        }
+        
+        #box li img.loaded {
+            width: 353px;
+            height: 225px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li><img src="" alt="" data-img="http://img1.3lian.com/2015/w1/62/d/112.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic1.nipic.com/2008-09-12/2008912235258231_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://imgsrc.baidu.com/imgad/pic/item/d000baa1cd11728bddb09b28c2fcc3cec3fd2c1e.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic2.ooopic.com/13/45/26/21bOOOPIC13_1024.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic2.ooopic.com/13/46/14/37bOOOPIC0a_1024.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic.58pic.com/58pic/15/82/19/48D58PICdCN_1024.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic1.win4000.com/wallpaper/a/57aeedd962c5f.jpg"></li>
+        <li><img src="" alt="" data-img="http://imgsrc.baidu.com/imgad/pic/item/42166d224f4a20a4ec188f329a529822730ed0c5.jpg"></li>
+        <li><img src="" alt="" data-img="http://uploadfile.huiyi8.com/2014/0311/20140311014820226.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic6.nipic.com/20100420/4013295_084827079435_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://img18.3lian.com/d/file/201706/09/eb84aab0b8ad42cd4b6cc9bbf70ec5a7.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic38.nipic.com/20140221/5171786_110631542000_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://d.hiphotos.baidu.com/zhidao/pic/item/b999a9014c086e066e53abf709087bf40bd1cb97.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic30.nipic.com/20130613/8887131_103652081000_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic22.photophoto.cn/20120103/0034034806308088_b.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic22.nipic.com/20120710/10503530_154229749197_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic9.nipic.com/20100811/4648267_171356044840_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic31.photophoto.cn/20140609/0034034883622832_b.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic30.photophoto.cn/20140214/0033034159265714_b.jpg"></li>
+        <li><img src="" alt="" data-img="http://img5.imgtn.bdimg.com/it/u=2665462000,2770310423&fm=200&gp=0.jpg"></li>
+        <li><img src="" alt="" data-img="http://imgsrc.baidu.com/imgad/pic/item/f603918fa0ec08fa13bdc27353ee3d6d54fbdaa1.jpg"></li>
+        <li><img src="" alt="" data-img="http://imgsrc.baidu.com/imgad/pic/item/34fae6cd7b899e51fab3e9c048a7d933c8950d21.jpg"></li>
+        <li><img src="" alt="" data-img="http://imgsrc.baidu.com/imgad/pic/item/e1fe9925bc315c602050233b87b1cb1348547718.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic.58pic.com/58pic/13/71/05/32M58PICZKY_1024.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic8.photophoto.cn/20080826/0033033927149835_b.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic36.photophoto.cn/20150827/0034034435207606_b.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic38.nipic.com/20140226/18064511_101736603151_2.jpg"></li>
+        <li><img src="" alt="" data-img="http://pic30.photophoto.cn/20140114/0034034810150817_b.jpg"></li>
+        <li><img src="" alt="" data-img="http://img02.tooopen.com/images/20150608/tooopen_sy_129103188937.jpg"></li>
+        <li><img src="" alt="" data-img="http://img003.hc360.cn/g3/M00/1D/5D/wKhQvFHIQbmER7UzAAAAAASnRmc995.jpg"></li>
+    </ul>
+</body>
+<!--script src="index.js"></script-->
+<!--script src="demo.js"></script-->
+<script src="new_demo.js"></script>
+
+</html>
